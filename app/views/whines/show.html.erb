@@ -1,0 +1,18 @@
+<div id="whine_index_header">
+  <h4>Whine # <%= @Whine.id %> | <%= link_to 'Add a new Whine/Question', new_whine_path, { :class=>"text-right text-white btn btn-primary text-white" } %></h4>
+</div>
+<div id="body_container" class="wrapper">
+  <div class="left_side_wrapper">
+    <div class="whine_container">
+        <div class="whine_header white_link"><%= @whine.title %>
+        </div>
+        <div class="whine_byline">Created by: <%= @whine.username %> on <%= @whine.created_at %>.</div>
+        <div class="whine_body">
+            <%= whine.body %>
+        </div>
+    </div>
+    <div class="answers_container">
+    </div>
+  </div>
+  <%= render 'rightsidemodules' %>
+</div>

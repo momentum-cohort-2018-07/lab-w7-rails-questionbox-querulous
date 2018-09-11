@@ -1,7 +1,9 @@
 class WhinesController < ApplicationController
-    
+    before_action :set_whine, only: [:show, :destroy]
+    before_action :set_whiner, only: [:destroy]
+
     def index
-        @whines = Whines.all
+        @whines = Whine.all
     end
 
     def show
@@ -12,14 +14,34 @@ class WhinesController < ApplicationController
     end
 
     def create
+        @whine = Whine.new(whines_params)
+
+        if @whine.save 
+            render :show, notice: 'Whining successful.'
+        else
+            render :new
+        end
     end
 
     def destroy
+        if current_whiner === @whiner
+            @whine.destroy
+        else
+            render :show, notice: 'You can only delete your own Whine.'
+        end
     end 
 
 private
+    def set_whiner
+        wtest = @answer.whiner_id
+        @whiner = Whiner.find(wtest)
+    end
+
+    def set_whine
+        @whine = Whine.find(params[:id])
+    end
 
     def whines_params
-        params.permit(:title, :body, :username, )
+        params.permit(:title, :body, :username)
     end
 end
