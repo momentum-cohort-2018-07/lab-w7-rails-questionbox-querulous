@@ -1,3 +1,15 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+    resources :whines do
+      resources :clarifiers
+      resources :answers do
+        resources :petulants
+      end
+    end
+
+    resources :whiners
+    resource :session, only: [:new, :create, :destroy]
+
+    root 'whines#index'
+
 end
