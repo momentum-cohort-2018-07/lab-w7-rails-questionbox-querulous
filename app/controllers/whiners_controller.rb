@@ -1,6 +1,8 @@
 class WhinersController < ApplicationController
+    before_action :set_whiner, only: [:show, :edit, :update, :destroy]
 
     def index
+        @whiners = Whiner.all
     end
 
     def show
@@ -21,16 +23,17 @@ class WhinersController < ApplicationController
     end
 
     def destroy
+        @user.destroy
     end
 
 private
 
-    def set_user
-        @user = User.find(params[:id])
+    def set_whiner
+        @whiner = Whiner.find(params[:id])
     end
 
     def whiner_params
-        params.require(:whiners).permit(:name, :username, :email, :password_digest)
+        params.require(:whiner).permit(:name, :username, :email, :password_digest)
     end
 
 end
