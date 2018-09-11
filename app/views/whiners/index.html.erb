@@ -1,0 +1,15 @@
+<h4>Whiner index</h4>
+
+<div id="body_container" class="body_wrapper">
+<%= @whiners.each do |whiner| %>
+    <div class="whiner_container">
+        <div class="whiner_header"> <%# Whiner name %>
+        </div>
+        <div class="whiner_body"> <%# List recent whines (and maybe answers) here %>
+        </div>
+        <div class="whiner_footer"> <%# Whiner since? something else? or not needed. Maybe put that in header %>
+        </div>
+    </div>
+
+<% end %>
+</div>

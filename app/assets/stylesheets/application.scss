@@ -10,6 +10,43 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
- *= require_self
  */
+ @import "bootstrap";
+
+ body {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.logged_banner {
+    padding: 5px;
+    border-bottom: 2px solid #ffffff;
+    text-align: center;
+    color: #ffffff;
+}
+
+.logged_in {
+    background-color: blue;
+}
+
+.logged_out {
+    background-color: crimson;
+}
+
+.white_link a:link,
+.white_link a:visited,
+.white_link a:hover,
+.white_link a:active {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+#logo_block {
+    width: 20%;
+    float: left;
+}
+
+h1, h2, .h1, .h2 {
+    margin-bottom: 0px;
+}
