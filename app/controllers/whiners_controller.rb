@@ -1,0 +1,2 @@
+class WhinersController < ApplicationController
+end

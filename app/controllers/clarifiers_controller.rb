@@ -1,0 +1,2 @@
+class ClarifiersController < ApplicationController
+end

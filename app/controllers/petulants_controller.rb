@@ -1,0 +1,2 @@
+class PetulantsController < ApplicationController
+end
