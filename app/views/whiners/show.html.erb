@@ -1,0 +1,14 @@
+<%if notice %>
+<p id="notice" class="alert alert-success" role="alert"><%= notice %></p>
+<% end %>
+<div class="whiner_wrapper">
+    <div class="whiner_show_header">Whiner info
+    </div>
+    <div class="whiner_show_body">
+        <ul>
+            <li>Whiner: <%= @whiner.username %></li>
+            <li>Name: <%= @whiner.name %></li>
+            <li>Email: <%= @whiner.email %></li>
+        </ul>
+    </div>
+</div>

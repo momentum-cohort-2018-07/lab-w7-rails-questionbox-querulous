@@ -1,4 +1,4 @@
-<%= form_with scope: :user, url: whiners_path, local: true do |form| %>
+<%= form_with model: @whiner, local: true do |form| %>
     
     <% if @whiner.errors.any? %>
         <div id="error_explanation">

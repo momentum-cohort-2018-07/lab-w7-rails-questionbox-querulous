@@ -14,6 +14,11 @@ class WhinersController < ApplicationController
 
     def create
         @whiner = Whiner.new(whiner_params)
+        if @whiner.save
+            redirect_to @whiner, notice: 'Account created. Please log in.'
+        else
+            render 'new'
+        end
     end
 
     def update
@@ -33,7 +38,7 @@ private
     end
 
     def whiner_params
-        params.require(:whiner).permit(:name, :username, :email, :password_digest)
+        params.require(:whiner).permit(:name, :username, :email, :password, :password_confirmation)
     end
 
 end
