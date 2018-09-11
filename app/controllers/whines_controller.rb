@@ -15,11 +15,10 @@ class WhinesController < ApplicationController
 
     def create
         @whine = Whine.new(whines_params)
-
         if @whine.save 
-            render :show, notice: 'Whining successful.'
+            redirect_to @whine, notice: 'Whining successful.'
         else
-            render :new
+            render 'new'
         end
     end
 
@@ -42,6 +41,6 @@ private
     end
 
     def whines_params
-        params.permit(:title, :body, :username)
+        params.require(:whine).permit(:title, :body, :whiner_id)
     end
 end

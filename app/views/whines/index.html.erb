@@ -7,13 +7,13 @@
     <div class="whine_container">
         <div class="whine_header white_link"><%= link_to "#{whine.title}", whine_path(whine.id) %>
         </div>
-        <div class="whine_body"><% if story.text.length > 140 %>
+        <div class="whine_body"><% if whine.body.length > 140 %>
             <%= whine.body.first(140) %>... <%= link_to "read more", whine_path(whine.id) %><br>
           <% else %>
             <%= whine.body %><br>
           <% end %>
         </div>
-        <div class="whine_byline">Created by: <%= whine.username %> on <%= whine.created_at %>.</div>
+        <div class="whine_byline">Created by: <%= whine.whiner.username %> on <%= whine.created_at %>.</div>
     </div>
     <% end %>
   </div>
