@@ -1,6 +1,6 @@
 class AnswersController < ApplicationController
-    before_action :set_answer, only: [:show, :edit, :update, :destroy, :set_whiner]
-    before_action :set_whiner, only [:destroy]
+    before_action :set_whine
+    before_action :set_whiner, only: [:destroy]
 
     def show
     end
@@ -10,6 +10,13 @@ class AnswersController < ApplicationController
     end
 
     def create
+        @answer = Answer.new(answers_params)
+        
+        if @answer.save
+            redirect_to @whine, notice: 'Answer successful.'
+        else
+            render 'new'
+        end
     end
 
     def destroy
@@ -20,14 +27,15 @@ class AnswersController < ApplicationController
 
 private
     def set_whiner
-        wtest = @answer.whiner_id
+        wtest = @whine.whiner_id
         @whiner = Whiner.find(wtest)
     end
-    def set_answer
-        @answer = Answer.find(params[:id])
+
+    def set_whine
+        @whine = Whine.find(params[:whine_id])
     end
 
-    def answer_params
-        params.permit(:body, :whiner_id, :whine_id)
+    def answers_params
+        params.require(:answer).permit(:body, :whiner_id, :whine_id)
     end    
 end

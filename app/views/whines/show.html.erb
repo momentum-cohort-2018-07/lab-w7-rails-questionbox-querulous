@@ -11,22 +11,31 @@
             <%= @whine.body %>
         </div>
     </div>
-    <div class="answers_index_container">
-        <h6>Answers: | <%= link_to 'Add an Answer', new_answer_path, { :class => "text-right text-white btn btn-primary text-white" } %></h6>
-        <% if @answers %>
-            <% @answers.each do |answer| %>
-        <div class="answer_container">
-            <div class="answer_vote">
-            </div>
-            <div class="answer_byline">Answer by <%= answer.whiner.username %>, posted at <%= answer.created_at %>.
-            </div>
-            <div class="answer_body"><%= answer.body %>
+    <div class="clarifiers_index_container">
+            <% @whine.clarifiers.each do |clarifier| %>
+        <div class="clarifier_container">
+            <div class="clarifier_byline"><%= clarifier.whiner.username %> at <%= clarifier.created_at %>.</div>
+            <div class="clarifier_body"><%= clarifier.body %>
             </div>
         </div>
             <% end %>
-        <% else %>
-            <p>Be the first to leave an answer!</p>
-        <% end %>
+        <div class="clarifier_form"><%= render :partial => 'clarifiers/form' %></div>
+    </div>
+    <div class="answers_index_container">
+        <h6>Answers:</h6>
+            <% @whine.answers.each do |answer| %>
+        <div class="answer_container">
+            <div class="answer_byline">Answer by <%= answer.whiner.username %> posted at <%= answer.created_at %>.
+            </div>
+            <div class="answer_inner">
+                <div class="answer_vote">
+                </div>
+                <div class="answer_body"><%= answer.body %>
+                </div>
+            </div>
+        </div>
+            <% end %>
+        <div class="answer_form"><%= render :partial => 'answers/form' %></div>
     </div>
   </div>
   <%= render 'rightsidemodules' %>

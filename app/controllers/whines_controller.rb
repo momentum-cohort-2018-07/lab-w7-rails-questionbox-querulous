@@ -15,6 +15,7 @@ class WhinesController < ApplicationController
 
     def create
         @whine = Whine.new(whines_params)
+
         if @whine.save 
             redirect_to @whine, notice: 'Whining successful.'
         else
@@ -32,7 +33,7 @@ class WhinesController < ApplicationController
 
 private
     def set_whiner
-        wtest = @answer.whiner_id
+        wtest = @whine.whiner_id
         @whiner = Whiner.find(wtest)
     end
 

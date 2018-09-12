@@ -1,0 +1,20 @@
+<%= form_with model: [ @whine, @whine.answers.build ], local: true do |form| %>
+
+    <% if @answer && @answer.errors.any? %>
+        <div id="error_explanation">
+            <h4><%= pluralize(@answer.errors.count, "error") %> prohibited this answer from being saved:</h4>
+            <ul>
+                <% @answer.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+    <p>
+      <%= form.label :answer %>
+      <%= form.text_area :body %>
+      <%= form.hidden_field :whine_id, :value => params[:id] %>
+      <%= form.hidden_field :whiner_id, :value => current_whiner.id %>
+      <%= form.submit :class => 'btn btn-secondary'%>
+    </p>
+<% end %>

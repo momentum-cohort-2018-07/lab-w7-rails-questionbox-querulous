@@ -12,15 +12,32 @@
       </div>
     </div>
     <div id="rs_module_2" class="rs_modules"><%# current_whiner's most recent whines %>
-      <div id="rsm2_header" class="rsm_header white_link">
+      <div id="rsm2_header" class="rsm_header white_link">Your Whines
       </div>
       <div id="rsm2_body" class="rsm_body">
+        <ul>
+          <% @whiniest = Whine.all %>
+          <% @whiniest.each do |rswhines| %>
+            <% if rswhines.whiner_id === current_whiner.id %>
+              <li><%= link_to "#{rswhines.title}", whine_path(rswhines.id) %></li>
+            <% end %>
+          <% end %>
+        </ul>
       </div>
     </div>
     <div id="rs_module_3" class="rs_modules"><%# current_whiner's most recent answers %>
-      <div id="rsm3_header" class="rsm_header white_link">
+      <div id="rsm3_header" class="rsm_header white_link">Your Answers
       </div>
       <div id="rsm3_body" class="rsm_body">
+        <ul>
+          <% @answerest = Answer.all %>
+          <% @answerest.each do |rsanswer| %>
+            <% if rsanswer.whiner_id === current_whiner.id %>
+              <li><%= link_to "#{rsanswer.whine.title}", whine_path(rsanswer.whine_id) %></li>
+            <% end %>
+          <% end %>
+        </ul>
+        </ul>
       </div>
     </div>
     <div id="rs_module_4" class="rs_modules"><%# ??? %>
