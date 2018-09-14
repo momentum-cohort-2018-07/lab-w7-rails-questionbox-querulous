@@ -38,7 +38,7 @@ private
     end
 
     def whiner_params
-        params.require(:whiner).permit(:name, :username, :email, :password, :password_confirmation)
+        params.require(:whiner).permit(:name, :username, :email, :password, :password_confirmation, :avatar)
     end
 
 end

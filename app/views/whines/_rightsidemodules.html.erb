@@ -3,7 +3,12 @@
       <div id="rsm1_header" class="rsm_header white_link">Whiner info
       </div>
       <div id="rsm1_body" class="rsm_body">
-<% if current_whiner %>
+          <% if current_whiner %>
+        <% if current_whiner.avatar.attached? %>
+          <%= image_tag current_whiner.avatar, :class => "rsm_avatar avatar_thumb" %>
+        <% else %>
+          <p><%= link_to 'Add an avatar', current_whiner.avatar.attach(params[:avatar]), :class => "rsm_avatar avatar_text btn btn-secondary btn-sm" %></p>
+        <% end %>
         <ul>
             <li>Whiner: <%= current_whiner.username %></li>
             <li>Name: <%= current_whiner.name %></li>
@@ -12,31 +17,26 @@
       </div>
     </div>
     <div id="rs_module_2" class="rs_modules"><%# current_whiner's most recent whines %>
-      <div id="rsm2_header" class="rsm_header white_link">Your Whines
+      <div id="rsm2_header" class="rsm_header white_link">Your Recent Whines
       </div>
       <div id="rsm2_body" class="rsm_body">
         <ul>
-          <% @whiniest = Whine.all %>
-          <% @whiniest.each do |rswhines| %>
-            <% if rswhines.whiner_id === current_whiner.id %>
-              <li><%= link_to "#{rswhines.title}", whine_path(rswhines.id) %></li>
-            <% end %>
+          <% @whiniest = Whine.select { |w| w.whiner_id === current_whiner.id }.last(5) %>
+          <% @whiniest.each do |rswhine| %>
+              <li><%= link_to "#{rswhine.title}", whine_path(rswhine.id) %></li>
           <% end %>
         </ul>
       </div>
     </div>
     <div id="rs_module_3" class="rs_modules"><%# current_whiner's most recent answers %>
-      <div id="rsm3_header" class="rsm_header white_link">Your Answers
+      <div id="rsm3_header" class="rsm_header white_link">Your Recent Answers
       </div>
       <div id="rsm3_body" class="rsm_body">
         <ul>
-          <% @answerest = Answer.all %>
+          <% @answerest = Answer.select { |a| a.whiner_id === current_whiner.id }.last(5) %>
           <% @answerest.each do |rsanswer| %>
-            <% if rsanswer.whiner_id === current_whiner.id %>
-              <li><%= link_to "#{rsanswer.whine.title}", whine_path(rsanswer.whine_id) %></li>
+              <li><%= link_to "#{Whine.find(rsanswer.whine_id).title}", whine_path(rsanswer.whine_id) %></li>
             <% end %>
-          <% end %>
-        </ul>
         </ul>
       </div>
     </div>

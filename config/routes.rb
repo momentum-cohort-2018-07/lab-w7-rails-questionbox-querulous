@@ -2,9 +2,7 @@ Rails.application.routes.draw do
 
     resources :whines do
       resources :clarifiers
-      resources :answers do
-        resources :petulants
-      end
+      resources :answers
     end
 
     resources :whiners

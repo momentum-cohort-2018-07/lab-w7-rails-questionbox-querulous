@@ -4,9 +4,8 @@
 <div id="body_container" class="wrapper">
   <div class="left_side_wrapper">
     <div class="whine_container">
-        <div class="whine_header white_link"><%= @whine.title %>
+        <div class="whine_header white_link"><%= @whine.title %><div class="whine_byline">Created by: <b><%= @whine.whiner.username %></b> at <%= @whine.created_at %>.</div>
         </div>
-        <div class="whine_byline">Created by: <%= @whine.whiner.username %> at <%= @whine.created_at %>.</div>
         <div class="whine_body">
             <%= @whine.body %>
         </div>
@@ -19,11 +18,12 @@
             </div>
         </div>
             <% end %>
-        <div class="clarifier_form"><%= render :partial => 'clarifiers/form' %></div>
+        <div class="clarifier_form"><%= render partial: 'clarifiers/form' %></div>
     </div>
     <div class="answers_index_container">
         <h6>Answers:</h6>
             <% @whine.answers.each do |answer| %>
+            <% @a_id = answer.id %>
         <div class="answer_container">
             <div class="answer_byline">Answer by <%= answer.whiner.username %> posted at <%= answer.created_at %>.
             </div>
@@ -35,7 +35,7 @@
             </div>
         </div>
             <% end %>
-        <div class="answer_form"><%= render :partial => 'answers/form' %></div>
+        <div class="answer_form"><%= render partial: 'answers/form' %></div>
     </div>
   </div>
   <%= render 'rightsidemodules' %>

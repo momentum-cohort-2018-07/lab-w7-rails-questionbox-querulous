@@ -25,6 +25,7 @@
 .right_side_wrapper {
     width: 30%;
     padding: 5px;
+    margin-top: 10px;
 }
 
 .whine_container {
@@ -51,9 +52,7 @@
 }
 
 .whine_byline {
-    width: 100%;
-    background-color: #cccccc;
-    padding: 3px 10px;
+    font-size: .8rem;
 }
 
 .rs_modules {
@@ -79,4 +78,17 @@
 
 #rsm1_body ul {
     list-style: none;
+}
+
+.rsm_avatar {
+    display: block;
+    margin: 0 auto;
+}
+
+.avatar_thumb {
+    width: 50%;
+}
+
+.avatar_text {
+    width: 50%;
 }
