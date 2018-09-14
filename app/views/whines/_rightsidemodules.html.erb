@@ -7,7 +7,7 @@
         <% if current_whiner.avatar.attached? %>
           <%= image_tag current_whiner.avatar, :class => "rsm_avatar avatar_thumb" %>
         <% else %>
-          <p><%= link_to 'Add an avatar', current_whiner.avatar.attach(params[:avatar]), :class => "rsm_avatar avatar_text btn btn-secondary btn-sm" %></p>
+          <p><%= link_to 'Add an avatar', edit_whiner_path(current_whiner), :class => "rsm_avatar avatar_text btn btn-secondary btn-sm" %></p>
         <% end %>
         <ul>
             <li>Whiner: <%= current_whiner.username %></li>

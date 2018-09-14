@@ -3,7 +3,7 @@ class WhinesController < ApplicationController
     before_action :set_whiner, only: [:destroy]
 
     def index
-        @whines = Whine.all
+        @whines = Whine.page(params[:page]).per(8)
     end
 
     def show
