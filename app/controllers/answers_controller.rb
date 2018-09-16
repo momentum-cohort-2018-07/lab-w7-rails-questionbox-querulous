@@ -36,6 +36,6 @@ private
     end
 
     def answers_params
-        params.require(:answer).permit(:body, :whiner_id, :whine_id)
+        params.require(:answer).permit(:body, :whiner_id, :whine_id, :answer_image)
     end    
 end

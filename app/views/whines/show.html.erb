@@ -1,20 +1,21 @@
-<div id="whine_index_header">
-  <h4>Whine # <%= @whine.id %> | <%= link_to 'Add a new Whine/Question', new_whine_path, { :class=>"text-right text-white btn btn-primary text-white" } %></h4>
-</div>
+<div class="breadcrumbs"><%= link_to "Home", root_path %> > <%= link_to "Whines index", whines_path %> > Whine # <%= @whine.id %> | <%= link_to 'Add a new Whine/Question', new_whine_path, { :class=>"text-right text-white btn btn-primary btn-sm" } %></div>
+
 <div id="body_container" class="wrapper">
   <div class="left_side_wrapper">
     <div class="whine_container">
-        <div class="whine_header white_link"><%= @whine.title %><div class="whine_byline">Created by: <b><%= @whine.whiner.username %></b> at <%= @whine.created_at %>.</div>
+        <div class="whine_header white_link"><%= @whine.title %><div class="whine_byline">Created by: <b><%= link_to "#{@whine.whiner.username}", whiner_path(@whine.whiner_id) %></b> at <%= @whine.created_at %>.</div>
         </div>
         <div class="whine_body">
-            <%= @whine.body %>
+            <%= markdown(@whine.body) %><% if @whine.whine_image.attached? %>
+                <%= image_tag @whine.whine_image, class: "whine_image" %>
+            <% end %>
         </div>
     </div>
     <div class="clarifiers_index_container">
             <% @whine.clarifiers.each do |clarifier| %>
         <div class="clarifier_container">
-            <div class="clarifier_byline"><%= clarifier.whiner.username %> at <%= clarifier.created_at %>.</div>
-            <div class="clarifier_body"><%= clarifier.body %>
+            <div class="clarifier_byline"><b><%= link_to "#{clarifier.whiner.username}", whiner_path(clarifier.whiner_id) %></b> at <%= clarifier.created_at %>.</div>
+            <div class="clarifier_body"><%= markdown(clarifier.body) %>
             </div>
         </div>
             <% end %>
@@ -25,12 +26,14 @@
             <% @whine.answers.each do |answer| %>
             <% @a_id = answer.id %>
         <div class="answer_container">
-            <div class="answer_byline">Answer by <%= answer.whiner.username %> posted at <%= answer.created_at %>.
+            <div class="answer_byline">Answer by <b><%= link_to "#{answer.whiner.username}", whiner_path(answer.whiner_id) %></b> posted at <%= answer.created_at %>.
             </div>
             <div class="answer_inner">
                 <div class="answer_vote">
                 </div>
-                <div class="answer_body"><%= answer.body %>
+                <div class="answer_body"><%= markdown(answer.body) %><% if answer.answer_image.attached? %>
+                    <%= image_tag answer.answer_image, class: "answer_image" %>
+                <% end %>
                 </div>
             </div>
         </div>

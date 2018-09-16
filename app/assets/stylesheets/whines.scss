@@ -3,8 +3,8 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .wrapper, #whine_index_header {
-    width: 95%;
-    margin: 10px;
+    width: 90%;
+    margin: 5px auto;
 }
 
 #whine_index_header {
@@ -15,10 +15,11 @@
     display: flex;
     flex-wrap: nowrap;
     flex-direction: row;
+    justify-content: space-between;
 }
 
 .left_side_wrapper {
-    width: 70%;
+    width: 65%;
     padding: 5px;
 }
 

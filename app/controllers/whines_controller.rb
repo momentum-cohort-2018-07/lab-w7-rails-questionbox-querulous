@@ -3,7 +3,7 @@ class WhinesController < ApplicationController
     before_action :set_whiner, only: [:destroy]
 
     def index
-        @whines = Whine.page(params[:page]).per(8)
+        @whines = Whine.order("created_at DESC").page(params[:page]).per(8)
     end
 
     def show
@@ -42,6 +42,6 @@ private
     end
 
     def whines_params
-        params.require(:whine).permit(:title, :body, :whiner_id)
+        params.require(:whine).permit(:title, :body, :whiner_id, :whine_image)
     end
 end

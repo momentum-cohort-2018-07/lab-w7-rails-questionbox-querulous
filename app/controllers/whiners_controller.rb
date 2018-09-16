@@ -2,7 +2,7 @@ class WhinersController < ApplicationController
     before_action :set_whiner, only: [:show, :edit, :update, :destroy]
 
     def index
-        @whiners = Whiner.all
+        @whiners = Whiner.page(params[:page]).per(8)
     end
 
     def show

@@ -20,6 +20,10 @@
       <%= form.text_area :body %>
     </p>
     <p>
+      <%= form.label :whine_image %><br>
+      <%= form.file_field :whine_image %>
+    </p>
+    <p>
       <%= form.hidden_field :whiner_id, :value => current_whiner.id %>
       <%= form.submit %>
     </p>

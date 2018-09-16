@@ -1,3 +1,5 @@
+<div class="breadcrumbs"><%= link_to "Home", root_path %> > Whiners index:</div>
+
 <h4>Whiner index</h4>
 
 <div id="body_container" class="body_wrapper whindex_wrapper">
@@ -15,4 +17,6 @@
     </div>
 <% end %>
 </div>
+    <%= paginate @whiners %>
+    <%= page_entries_info @whiners %>
 

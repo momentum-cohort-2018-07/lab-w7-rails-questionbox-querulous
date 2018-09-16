@@ -40,15 +40,21 @@
         </ul>
       </div>
     </div>
-    <div id="rs_module_4" class="rs_modules"><%# ??? %>
-      <div id="rsm4_header" class="rsm_header white_link">
-      </div>
-      <div id="rsm4_body" class="rsm_body">
-      </div>
-    </div>
 <% else %>
         Please <%= link_to 'Log In', new_session_path, { :class=>"text-right text-white btn btn-secondary text-white"} %> to see your user info
       </div>
     </div>
 <% end %>
+    <div id="rs_module_4" class="rs_modules"><%# most active users %>
+      <div id="rsm4_header" class="rsm_header white_link">Most Active Whiners
+      </div>
+      <div id="rsm4_body" class="rsm_body">
+      </div>
+    </div>
+    <div id="rs_module_5" class="rs_modules"><%# answers voted up the most %>
+      <div id="rsm4_header" class="rsm_header white_link">Best Answers
+      </div>
+      <div id="rsm4_body" class="rsm_body">
+      </div>
+    </div>
   </div>

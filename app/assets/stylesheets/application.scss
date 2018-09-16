@@ -56,3 +56,22 @@
 h1, h2, .h1, .h2 {
     margin-bottom: 0px;
 }
+
+.breadcrumbs {
+    padding: 3px 5px;
+    background-color: #eeeeee;
+    font-size: 1.1rem;
+    font-weight: normal;
+    font-family: sans-serif;
+    color: green; 
+    border-bottom: 2px solid #ffffff;
+    margin-bottom: 5px;
+}
+
+.breadcrumbs a:link,
+.breadcrumbs a:visited,
+.breadcrumbs a:hover,
+.breadcrumbs a:active {
+    color: green;
+    text-decoration: none;
+}
