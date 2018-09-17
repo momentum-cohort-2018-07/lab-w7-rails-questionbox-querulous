@@ -1,6 +1,7 @@
 class WhinesController < ApplicationController
     before_action :set_whine, only: [:show, :destroy]
     before_action :set_whiner, only: [:destroy]
+    
 
     def index
         @whines = Whine.order("created_at DESC").page(params[:page]).per(8)

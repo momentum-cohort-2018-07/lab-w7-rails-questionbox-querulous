@@ -30,6 +30,18 @@
             </div>
             <div class="answer_inner">
                 <div class="answer_vote">
+                    <%= link_to like_whine_answer_path(answer.whine_id, answer.id), method: :put do %>
+                        +
+                    <% end %><br>
+                    <%= answer.get_upvotes.size - answer.get_downvotes.size %><br>
+                    <%= link_to dislike_whine_answer_path(answer.whine_id, answer.id), method: :put do %>
+                        -
+                    <% end %>
+                    <% if current_whiner.id === @whine.whiner_id %>
+                        <%= link_to like_whine_answer_path(answer.whine_id, answer.id), method: :put do %>
+                            ?
+                        <% end %>
+                    <% end %>
                 </div>
                 <div class="answer_body"><%= markdown(answer.body) %><% if answer.answer_image.attached? %>
                     <%= image_tag answer.answer_image, class: "answer_image" %>

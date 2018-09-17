@@ -25,6 +25,18 @@ class AnswersController < ApplicationController
         end
     end
 
+    def upvote
+        @answer_upvote = Answer.find(params[:id])
+        @answer_upvote.upvote_by current_whiner
+        redirect_to @whine
+    end
+
+    def downvote
+        @answer_downvote = Answer.find(params[:id])
+        @answer_downvote.downvote_by current_whiner
+        redirect_to @whine
+    end
+
 private
     def set_whiner
         wtest = @whine.whiner_id

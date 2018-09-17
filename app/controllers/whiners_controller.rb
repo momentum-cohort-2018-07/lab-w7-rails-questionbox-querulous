@@ -15,6 +15,7 @@ class WhinersController < ApplicationController
     def create
         @whiner = Whiner.new(whiner_params)
         if @whiner.save
+            WhinerMailer.signup(@whiner).deliver_now
             redirect_to @whiner, notice: 'Account created. Please log in.'
         else
             render 'new'
